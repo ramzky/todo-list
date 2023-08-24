@@ -1,25 +1,32 @@
 
-function todoList(name, desc) {
-  const todoObj = {};
-
-  todoObj.name = name;
-  todoObj.desc = desc;
-
-  return todoObj;
+function list(name, desc) {
+  return {
+    name,
+    desc
+  }
 }
 
-function project(name, todoList) {
-  const projectObj = {};
+function project(name, list) {
+  const lists = [];
+  if (list != undefined) lists.push(list);
 
+  return {
+    name,
+    lists
+  }
+}
+
+function folder(project) {
   const projects = [];
-  projects.push(todoList);
-  projectObj.name = name;
-  projectObj.projects = projects.concat(projects);
+  if (project != undefined) projects.push(project);
 
-  return projectObj;
+  return {
+    projects
+  };
 }
 
 export {
-  todoList,
-  project
+  list,
+  project,
+  folder
 };

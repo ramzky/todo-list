@@ -1,0 +1,51 @@
+:root {
+  box-sizing: border-box;
+  --main-size: 60rem; /* 480px */
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana sans-serif;
+  font-family: 'MonteCarlo', cursive;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  /*display: flex;*/
+  height: 100vh;
+  background-color: #DAB31B;
+  /*position: relative;*/
+}
+.container {
+  margin: 0 auto;
+  flex: 0 0 auto;
+  /*background-image: url('./bg.jpg');*/
+  /*use below bg on menu tab*/
+  /*background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('./bg.jpg');*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  gap: 2rem;
+  
+}
+.flex-top-box {
+  width: min(max(var(--main-size), 100%), calc(var(--main-size) * 2));
+  min-height: var(--main-size);
+  border: 0.0625rem solid black;
+  background-color: #D2DAED;
+  /*background-color: #EA906C;*/
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+}
+.flex-box {
+  /*min-height: 2.5rem;*/
+  flex: 0 0 100%;
+  display: flex;
+  flex-flow: row wrap;
+  /*border: 0.0625rem solid goldenrod;*/
+}
+.flex-item {
+  flex: 0 0 100%;
+}

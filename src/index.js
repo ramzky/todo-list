@@ -1,8 +1,14 @@
-import * as cObj from './componentObjs';
+import * as objs from './componentObjs';
+import * as inp from './componentInput';
+import * as sc from './componentScreen';
+//import * as layout from './componentLayout';
 import './style.css';
 
-//let test = cObj.todoList('todo1', 'hey');
-//console.log(test.name);
+function controller() {
 
+  sc.deployLayout();
+}
+
+controller();
 
 //
