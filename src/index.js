@@ -5,10 +5,26 @@ import * as sc from './componentScreen';
 import './style.css';
 
 function controller() {
+  const li = objs.list('default', 'default');
+  const prj = objs.project('Default', li)
+  const fd = objs.folder(prj);
 
-  sc.deployLayout();
+  // actions/commands...
+  function addList(name, desc, projName) {
+    newList = objs.list(name, desc);
+    projName.projects.push(newList);
+  }
+
+  function initialize() {
+    sc.updateScreen(fd.projects);
+  }
+  
+  return {
+    initialize
+  }
 }
 
-controller();
+const init = controller()
+init.initialize();
 
 //

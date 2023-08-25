@@ -9,8 +9,14 @@ function deployLayout() {
     ['flex-top-box', 'container']);
 }
 
-function updateScreen() {
-
+function updateScreen(folder) {
+  // console
+  folder.forEach((prj) => {
+    console.log(prj.name + ' project\n');
+    prj.lists.forEach((list) => {
+      console.log('\t ' + list.name + '\n');
+    });
+  });
 }
 
 export {
