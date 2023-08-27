@@ -51,16 +51,21 @@ body {
 
 
 .sidebar {
+  max-width: 15rem;
   flex: 1 0 10rem;
 }
 .proj-card {
-
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .proj-card:hover {
   cursor: pointer;
   background-color: #888;
 }
-
+.proj-card-select {
+  background-color: #999;
+}
 
 .list-panel {
   flex: 8 0 21rem;
@@ -101,13 +106,16 @@ body {
   min-height: .5rem;
   font-size: 2rem;
 }
-.card button, .add-project, .add-list {
+.card button, .add-project, .add-list, .delete-project {
   padding: 0;
   background-color: transparent;
   border: none;
   font-size: 1rem;
 }
-.card button:hover, .add-project:hover, .add-list:hover {
+.card button:hover,
+.add-project:hover,
+.add-list:hover,
+.delete-project:hover {
   cursor: pointer;
   color: #7287E9;
 }

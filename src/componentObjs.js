@@ -48,7 +48,12 @@ function folder(project) {
     projID++;
 
     fd.projects.push(newProj);
+  }
 
+  function delProj(projectObj) {
+    const projIndex = fd.projects.indexOf(projectObj);
+    fd.projects.splice(projIndex, 1);
+    //console.log('deleted ' + projIndex);
   }
 
 export {
@@ -57,5 +62,6 @@ export {
   folder,
   addList,
   addProj,
+  delProj,
   fd
 };

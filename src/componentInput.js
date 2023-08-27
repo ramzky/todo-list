@@ -1,5 +1,6 @@
 import * as sc from './componentScreen';
 import * as objs from './componentObjs';
+import * as layout from './componentLayout';
 
 const actions = {
   ADD: 'ADD',
@@ -9,6 +10,7 @@ const actions = {
 function showProjLists(event, proj) {
   const projDivs = document.querySelectorAll('.sidebar .proj-card');
   sc.updateScreenList(event, proj);
+  sc.selectedProject(event);
 }
 
 function saveList(event, list) {
@@ -22,15 +24,46 @@ function saveList(event, list) {
   console.log(list);
 }
 
-function addProj(event, folder) {
+function addProj(event, folder, testName) {
   //get from dialog
-  const testprojname = 'new project';
-  objs.addProj(testprojname);
+  if (testName === undefined) testName = `temp ${Math.floor(Math.random() * 10000)}`;
+  objs.addProj(testName);
   sc.updateScreenProj(folder);
-  //console.log(objs.fd.projects);
+  sc.selectedProject();
+  
+}
+
+function deleteProj(event, folder) {
+  const projToDelete = folder.at(sc.projSelected-1);
+  //console.log(projToDelete);
+  const projExist = document.querySelector('.div-project').nextElementSibling;
+  //console.log(projExist);
+  if (projExist != null && projToDelete != undefined) {
+    objs.delProj(projToDelete);
+    sc.updateScreenProj(folder);
+    layout.clearLayoutSibling(document.querySelector('.add-list'));
+    sc.resetSelect();
+    
+    if (folder.length > 0) {
+      sc.selectedProject();
+      sc.updateScreenList(event,
+      folder.at(sc.projSelected-1));
+    }
+  }
+  
 }
 
 function addList(event, project) {
+  console.log(objs.fd.projects.indexOf(project));
+  if (objs.fd.projects.indexOf(project) === -1) project = undefined;
+  if (project === undefined) {
+    //objs.addProj('Default');
+    //console.log(projects);
+    //sc.updateScreenProj(projects);
+    if (objs.fd.projects[0] === undefined)
+      addProj(event, objs.fd.projects, `name ${Math.floor(Math.random() * 10000)}`);
+    project = objs.fd.projects[0];
+  }
   objs.addList('', '', project.name);
   sc.updateScreenList(event, project);
   console.log(project.lists);
@@ -71,6 +104,10 @@ function handleInput(event, ...items) {
     case 'ADDPRJ':
       //console.log(items[0]);
       addProj(event, items[0]);
+      break;
+    case 'DELPRJ':
+      //console.log(items[0]);
+      deleteProj(event, items[0]);
       break;
     case 'ADDLIST':
       //console.log(items[0]);

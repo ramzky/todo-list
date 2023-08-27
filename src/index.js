@@ -44,11 +44,11 @@ function controller() {
   
 
   function initialize() {
-    objs.addProj('projnametest');
-    objs.addProj('project22');
-    objs.addList('Default', 'test\ndesc', 'projnametest');
-    objs.addList('Default2', 'def2', 'projnametest');
-    objs.addList('Default4', 'def34', 'project22');
+    //objs.addProj('Default');
+    //objs.addProj('project22');
+    //objs.addList('', '', 'Default');
+    //objs.addList('Default2', 'def2', 'projnametest');
+    //objs.addList('Default4', 'def34', 'project22');
     //sc.deployLayout();
     sc.initializeScreen(objs.fd.projects);
     //addListener();
