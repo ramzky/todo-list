@@ -32,55 +32,15 @@ const clearLayout = (nodeRef) => {
   }
 };
 
-//move this??
-const deployLayout = () => {
-  createLayout('div', 1, body, ['main-container']);
-  createLayout('div', 1,
-    document.querySelector('.main-container'),
-    ['flex-top-box', 'container']);
-  createLayout('div', 3,
-    document.querySelector('.container'),
-    ['flex-box', 'heading'],
-    ['flex-box', 'content'],
-    ['flex-box', 'footer']);
+const clearLayoutSibling = (nodeRef) => {
+  while (nodeRef.nextElementSibling) {
+    nodeRef.parentElement.removeChild(nodeRef.nextElementSibling);
+  }
+};
 
-  //heading part
-  createLayout('div', 2,
-    document.querySelector('.heading'),
-    ['flex-box', 'logo'],
-    ['flex-box', 'nav']);
-  createLayout('h1', 1,
-    document.querySelector('.logo'));
-  createLayout('button', 3,
-    document.querySelector('.nav'));
-
-  //heading texts
-  document.querySelector('.logo > h1').textContent =
-    'Fruitypatooty';
-  document.querySelector('.nav > button:nth-child(1)')
-    .textContent = 'Home';
-  document.querySelector('.nav > button:nth-child(2)')
-    .textContent = 'Menu';
-  document.querySelector('.nav > button:nth-child(3)')
-    .textContent = 'Contact';
-
-  //footer
-  createLayout('p', 1,
-    document.querySelector('.footer'));
-  document.querySelector('.footer p')
-    .textContent = 'Photo by ';
-  createLayout('a', 1,
-    document.querySelector('.footer p'));
-  document.querySelector('.footer p a')
-    .setAttribute('href', 'https://www.pexels.com/photo/mango-juice-in-clear-glass-bottle-4955257/');
-  document.querySelector('.footer p a')
-    .textContent = 'Roman Odintsov';
-}
 
 export {
-  //generateElement,
-  //appendElementTo,
   createLayout,
-  deployLayout,
-  clearLayout
+  clearLayout,
+  clearLayoutSibling
 };

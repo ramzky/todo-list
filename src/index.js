@@ -5,18 +5,53 @@ import * as sc from './componentScreen';
 import './style.css';
 
 function controller() {
-  const li = objs.list('default', 'default');
-  const prj = objs.project('Default', li)
-  const fd = objs.folder(prj);
+  //const li = objs.list('default', 'default');
+  //const prj = objs.project('Default', li)
+  
 
-  // actions/commands...
-  function addList(name, desc, projName) {
-    newList = objs.list(name, desc);
-    projName.projects.push(newList);
+  //test obj
+  
+
+
+  function addListener() {
+    const projDivs = document.querySelectorAll('.sidebar .proj-card');
+    projDivs.forEach((projDiv) => {
+      projDiv.addEventListener('click', (e) => {
+        sc.updateScreenList(e, fd.projects);
+      });
+    });
+
+    const saveBtns = document.querySelectorAll('#list > .save');
+    saveBtns.forEach((saveBtn) => {
+      saveBtn.addEventListener('click', (event) => {
+        let nameDiv = event.target.parentElement.firstElementChild;
+        let descDiv = nameDiv.nextElementSibling;
+        let cardId = event.target.parentElement.parentElement
+          .parentElement.dataset;
+
+        const selectedList = (fd.projects.filter((proj) => 
+          proj.id === cardId.parentid
+        ))[0].lists.filter((list) => list.id === cardId.listid);
+        
+        selectedList.name = nameDiv.innerText;
+        selectedList.desc = descDiv.innerText;
+        console.log(selectedList);
+      });
+    });
+    
   }
 
+  
+
   function initialize() {
-    sc.updateScreen(fd.projects);
+    objs.addProj('projnametest');
+    objs.addProj('project22');
+    objs.addList('Default', 'test\ndesc', 'projnametest');
+    objs.addList('Default2', 'def2', 'projnametest');
+    objs.addList('Default4', 'def34', 'project22');
+    //sc.deployLayout();
+    sc.initializeScreen(objs.fd.projects);
+    //addListener();
   }
   
   return {

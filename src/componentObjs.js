@@ -1,4 +1,8 @@
 
+const fd = folder();
+let listID = 1000;
+let projID = 100;
+
 function list(name, desc) {
   return {
     name,
@@ -25,8 +29,33 @@ function folder(project) {
   };
 }
 
+// actions/commands...
+  function addList(name, desc, projName) {
+    const newList = list(name, desc);
+    newList.id = listID.toString();
+    listID++;
+
+    const proj = fd.projects.filter((project) => project.name === projName);
+    if (proj.length > 0) {
+      newList.parentid = proj[0].id;
+      proj[0].lists.push(newList);
+    };
+  }
+
+  function addProj(projName) {
+    const newProj = project(projName);
+    newProj.id = projID.toString();
+    projID++;
+
+    fd.projects.push(newProj);
+
+  }
+
 export {
   list,
   project,
-  folder
+  folder,
+  addList,
+  addProj,
+  fd
 };
