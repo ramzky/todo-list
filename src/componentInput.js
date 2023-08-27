@@ -22,6 +22,7 @@ function saveList(event, list) {
   list.name = nameDiv.innerText;
   list.desc = descDiv.innerText;
   console.log(list);
+  objs.saveToLocal();
 }
 
 function addProj(event, folder, testName) {
@@ -30,7 +31,7 @@ function addProj(event, folder, testName) {
   objs.addProj(testName);
   sc.updateScreenProj(folder);
   sc.selectedProject();
-  
+  objs.saveToLocal();
 }
 
 function deleteProj(event, folder) {
@@ -50,7 +51,7 @@ function deleteProj(event, folder) {
       folder.at(sc.projSelected-1));
     }
   }
-  
+  objs.saveToLocal();
 }
 
 function addList(event, project) {
@@ -67,6 +68,7 @@ function addList(event, project) {
   objs.addList('', '', project.name);
   sc.updateScreenList(event, project);
   console.log(project.lists);
+  objs.saveToLocal();
 }
 
 function deleteList(event, list, project) {
@@ -84,6 +86,7 @@ function deleteList(event, list, project) {
   console.log(project);
   sc.updateScreenList(event, project);
   console.log(selectedList);
+  objs.saveToLocal();
 }
 
 function handleInput(event, ...items) {

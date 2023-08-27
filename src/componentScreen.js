@@ -213,8 +213,10 @@ function initializeScreen(folder) {
     //if (prj.lists.length > 1) cardCreate(prj.lists[0]);
   });
   //console.log(folder);
-  if (folder.length > 0)
+  if (folder.length > 0) {
     folder[0].lists.forEach((list) => cardCreate(list, folder[0]));
+    selectedProject();
+  }
 }
 
 export {

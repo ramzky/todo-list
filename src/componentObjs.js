@@ -1,7 +1,28 @@
+const keyNameObj = 'todolistobj'
+let fd;
+let listID;
+let projID;
+if (!localStorage.getItem(keyNameObj)) {
+  fd = folder();
+  listID = 1000;
+  projID = 100;
+  saveToLocal(keyNameObj, fd, listID, projID);
+} else getFromLocal(keyNameObj);
 
-const fd = folder();
-let listID = 1000;
-let projID = 100;
+function saveToLocal(...objs) {
+  const obj = {};
+  obj.fdSave = fd;
+  obj.listIDSave = listID;
+  obj.projIDSave = projID;
+  localStorage.setItem(keyNameObj, JSON.stringify(obj));
+}
+
+function getFromLocal(...objs) {
+  const obj = JSON.parse(localStorage.getItem(keyNameObj));
+  fd = obj.fdSave;
+  listID = obj.listIDSave;
+  projID = obj.projIDSave;
+}
 
 function list(name, desc) {
   return {
@@ -63,5 +84,6 @@ export {
   addList,
   addProj,
   delProj,
-  fd
+  fd,
+  saveToLocal
 };

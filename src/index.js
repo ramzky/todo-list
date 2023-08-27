@@ -62,4 +62,7 @@ function controller() {
 const init = controller()
 init.initialize();
 
+setTimeout(() => console.log(objs.fd), 5000);
+console.log(JSON.parse(JSON.stringify(objs.fd)));
+
 //
