@@ -78,10 +78,22 @@ function cardCreate(list, ...project) {
     .setAttribute('contenteditable', 'true');
   document.querySelector(lastCard + ' .form-container .title')
     .innerText = list.name;
+  document.querySelector(lastCard + ' .form-container .title')
+    .setAttribute('data-name', 'SAVE');
+  document.querySelector(lastCard + ' .form-container .title')
+    .addEventListener('blur', (event) => {
+      inp.handleInput(event, list)
+    });
   document.querySelector(lastCard + ' .form-container .desc')
     .setAttribute('contenteditable', 'true');
   document.querySelector(lastCard + ' .form-container .desc')
     .innerText = list.desc;
+  document.querySelector(lastCard + ' .form-container .desc')
+    .setAttribute('data-name', 'SAVE');
+  document.querySelector(lastCard + ' .form-container .desc')
+    .addEventListener('blur', (event) => {
+      inp.handleInput(event, list)
+    });
   layout.createLayout('button', 2,
     document.querySelector(lastCard + ' .form-container > form'),
     ['save'],
@@ -120,6 +132,20 @@ function projCardCreate(prj) {
     .innerText = prj.name;
   document.querySelector('.sidebar .proj-card:last-child')
     .addEventListener('click', (event) => {
+      inp.handleInput(event, prj);
+    });
+  document.querySelector('.sidebar .proj-card:last-child')
+    .addEventListener('dblclick', (event) => {
+      inp.handleInput(event, prj);
+      event.target.focus();
+    });
+  document.querySelector('.sidebar .proj-card:last-child')
+    .addEventListener('keydown', (event) => {
+      inp.handleInput(event, prj);
+      //if (event.key === 'Enter') event.preventDefault();
+    });
+  document.querySelector('.sidebar .proj-card:last-child')
+    .addEventListener('blur', (event) => {
       inp.handleInput(event, prj);
     });
   //console.log(prj);

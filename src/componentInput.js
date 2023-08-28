@@ -89,6 +89,16 @@ function deleteList(event, list, project) {
   objs.saveToLocal();
 }
 
+function doubleClick(event, proj) {
+  event.target.setAttribute('contenteditable', 'true');
+}
+
+function outFocus(event, proj) {
+  event.target.setAttribute('contenteditable', 'false');
+  proj.name = event.target.innerText;
+  objs.saveToLocal();
+}
+
 function handleInput(event, ...items) {
   //console.log(proj.lists[0].name);
   let e;
@@ -102,7 +112,14 @@ function handleInput(event, ...items) {
       break;
     case 'SWAP':
       //console.log(e);
-      showProjLists(event, items[0]);
+      if (event.type === 'dblclick') doubleClick(event, items[0]);
+      else if (event.type === 'keydown' &&
+        event.key === 'Enter') {
+          event.preventDefault();
+          outFocus(event, items[0]);
+      }
+      else if (event.type === 'blur') outFocus(event, items[0]);
+      else if ((event.type === 'click')) showProjLists(event, items[0]);
       break;
     case 'ADDPRJ':
       //console.log(items[0]);
