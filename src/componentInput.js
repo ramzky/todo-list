@@ -27,7 +27,7 @@ function saveList(event, list) {
 
 function addProj(event, folder, testName) {
   //get from dialog
-  if (testName === undefined) testName = `temp ${Math.floor(Math.random() * 10000)}`;
+  if (testName === undefined) testName = `new ${Math.floor(Math.random() * 10000)}`;
   objs.addProj(testName);
   sc.updateScreenProj(folder);
   sc.selectedProject();

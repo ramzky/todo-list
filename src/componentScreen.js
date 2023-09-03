@@ -26,7 +26,7 @@ function deployLayout(folder) {
     document.querySelector('.sidebar .div-project'),
     ['add-project']);
   document.querySelector('.sidebar .add-project')
-    .textContent = 'Add Project';
+    .textContent = 'New';
   document.querySelector('.sidebar .add-project')
     .setAttribute('data-name', 'ADDPRJ');
   document.querySelector('.sidebar .add-project')
@@ -103,7 +103,7 @@ function cardCreate(list, ...project) {
   document.querySelector(lastCard + ' .form-container .save')
     .setAttribute('data-name', 'SAVE');
   document.querySelector(lastCard + ' .form-container .save')
-    .textContent = 'Save';
+    .textContent = '';
   document.querySelector(lastCard + ' .form-container .save')
     .addEventListener('click', (event) => {
       inp.handleInput(event, list)
@@ -113,7 +113,7 @@ function cardCreate(list, ...project) {
   document.querySelector(lastCard + ' .form-container .delete')
     .setAttribute('data-name', 'DELETE');
   document.querySelector(lastCard + ' .form-container .delete')
-    .textContent = 'Delete';
+    .textContent = '';
   document.querySelector(lastCard + ' .form-container .delete')
     .addEventListener('click', (event) => {
       inp.handleInput(event, list, project[0])
@@ -156,7 +156,7 @@ function buttonCreateList(project) {
     document.querySelector('.list-panel'),
     ['add-list']);
   document.querySelector('.list-panel .add-list')
-    .textContent = 'Add List';
+    .textContent = '';
   document.querySelector('.list-panel .add-list')
     .setAttribute('data-name', 'ADDLIST');
   document.querySelector('.list-panel .add-list')

@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 :root {
   box-sizing: border-box;
   --main-size: 60rem; /* 480px */
   font-family:'Segoe UI', Tahoma, Geneva, Verdana sans-serif;
   font-family: 'MonteCarlo', cursive;
+  font-family: 'Roboto', sans-serif;
 }
 *, *::before, *::after {
   box-sizing: inherit;
@@ -14,8 +17,8 @@ body {
 
 .main-container {
   /*display: flex;*/
-  height: 100vh;
-  background-color: #DFE3F6;
+  min-height: 100vh;
+  background-color: #dfdfd6;
   /*position: relative;*/
 }
 .container {
@@ -28,13 +31,15 @@ body {
   background-repeat: no-repeat;
 }
 .flex-top-box {
-  width: min(max(calc(var(--main-size) / 2), 100%), calc(var(--main-size) * 2));
+  width: min(max(calc(var(--main-size) / 2), 100%), calc(var(--main-size) ));
   min-height: var(--main-size);
-  border: 0.0625rem solid black;
-  background-color: #D2DAED;
+  border: 0.0625rem solid rgb(210, 161, 98);
+  background-color: #dfdfd6;
   /*background-color: #EA906C;*/
   display: flex;
   flex-flow: row wrap;
+  background-image: url('./sticky.jpg');
+  background-attachment: fixed;
   
 }
 .flex-box {
@@ -46,18 +51,25 @@ body {
 }
 .flex-item {
   flex: 0 0 100%;
-  border: 0.0625rem solid goldenrod;
+  /*border: 0.0625rem solid goldenrod;*/
 }
 
 
 .sidebar {
   max-width: 15rem;
   flex: 1 0 10rem;
+  padding: .5rem;
+}
+.sidebar .delete-project {
+  margin-left: .5rem;
 }
 .proj-card {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  margin: .2rem 0;
+  padding: 0 .2rem;
+  border-radius: .2rem;
 }
 .proj-card:hover {
   cursor: pointer;
@@ -71,15 +83,24 @@ body {
   flex: 8 0 21rem;
   padding: 2rem;
 }
+.add-list {
+  background-image: url('./add.svg');
+  background-size: contain;
+  width: 4rem;
+  height: 4rem;
+}
 .card {
-  width: 100%;
+  width: min(40rem, 100%);
   /*min-height: 15rem;*/
   padding: 1rem;
+  margin: 1rem 0;
   background-color: #eee;
   border-radius: 1rem;
   box-shadow: .25rem .3rem .5rem #888;
   flex: 0 0 100%;
   position: relative;
+  background-image: url('./paper.jpg');
+  background-size: cover;
 }
 .card:hover {
   /*background-color: #fff;
@@ -95,7 +116,7 @@ body {
   outline: none;
   border: none;
   border-top: .0625rem solid black;
-  border-bottom: .125rem solid black;
+  /*border-bottom: .125rem solid black;*/
   overflow-wrap: break-word;
   word-break: break-all;
   /*white-space: break-spaces;*/
@@ -118,4 +139,11 @@ body {
 .delete-project:hover {
   cursor: pointer;
   color: #7287E9;
+}
+.card .delete {
+  background-color: transparent;
+  background-image: url('./check.svg');
+  background-size: contain;
+  width: 1.5rem;
+  height: 1.5rem;
 }
